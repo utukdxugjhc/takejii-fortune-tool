@@ -589,6 +589,276 @@
         .delay-2 { animation-delay: 0.4s; opacity: 0; }
         .delay-3 { animation-delay: 0.6s; opacity: 0; }
         .delay-4 { animation-delay: 0.8s; opacity: 0; }
+        .delay-5 { animation-delay: 1.0s; opacity: 0; }
+        
+        /* チラ見せセクション */
+        .teaser-section {
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        .teaser-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .teaser-header h3 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.1em;
+        }
+        
+        .teaser-header p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+        
+        .teaser-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .teaser-item {
+            background: rgba(13, 10, 26, 0.6);
+            border: 1px solid var(--border-mystical);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .teaser-item-label {
+            font-size: 0.75rem;
+            color: var(--accent-purple);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .teaser-item-value {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            filter: blur(6px);
+            user-select: none;
+            transition: filter 0.3s ease;
+        }
+        
+        .teaser-item-stars {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+            filter: blur(4px);
+            user-select: none;
+        }
+        
+        .teaser-item::after {
+            content: '🔒';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        
+        /* 詳細運勢（文章途切れ） */
+        .teaser-detail {
+            background: rgba(13, 10, 26, 0.5);
+            border: 1px solid var(--border-mystical);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .teaser-detail h4 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 0.95rem;
+            color: var(--accent-pink);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        
+        .teaser-detail-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .teaser-detail-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--bg-card-solid));
+        }
+        
+        .teaser-detail-blur {
+            filter: blur(5px);
+            user-select: none;
+        }
+        
+        /* 相性 */
+        .teaser-compatibility {
+            background: linear-gradient(135deg, rgba(237,100,166,0.1), rgba(159,122,234,0.1));
+            border: 1px solid rgba(237,100,166,0.3);
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .teaser-compatibility h4 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 0.95rem;
+            color: var(--accent-pink);
+            margin-bottom: 0.5rem;
+        }
+        
+        .teaser-compatibility-value {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        
+        .compat-badge {
+            background: rgba(159,122,234,0.2);
+            border: 1px solid rgba(159,122,234,0.4);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            filter: blur(5px);
+            user-select: none;
+        }
+        
+        /* CTA */
+        .premium-cta {
+            background: linear-gradient(135deg, rgba(246,224,94,0.15), rgba(237,100,166,0.15), rgba(159,122,234,0.15));
+            border: 2px solid;
+            border-image: linear-gradient(135deg, var(--accent-gold), var(--accent-pink)) 1;
+            border-radius: 20px;
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        .premium-cta-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 0.75rem;
+            border-radius: 50px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .premium-cta h3 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1.15rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .premium-cta-list {
+            text-align: left;
+            max-width: 280px;
+            margin: 1rem auto;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .premium-cta-list li {
+            margin: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            list-style: none;
+        }
+        
+        .premium-cta-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+        }
+        
+        .premium-cta-price {
+            margin: 1rem 0;
+        }
+        
+        .premium-cta-price .price-original {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+        
+        .premium-cta-price .price-current {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px var(--glow-gold);
+        }
+        
+        .premium-cta-price .price-unit {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .premium-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ffb347 50%, var(--accent-pink) 100%);
+            background-size: 200% 200%;
+            color: #1a1230;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Kaisei Decol', serif;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            text-decoration: none;
+            animation: gradientMove 3s ease infinite;
+            box-shadow: 0 4px 25px var(--glow-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px var(--glow-gold);
+        }
+        
+        .premium-cta-note {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
@@ -697,6 +967,80 @@
                     <h3>✦ 今月のメッセージ ✦</h3>
                     <p id="fortune-text"></p>
                 </div>
+                
+                <!-- チラ見せセクション -->
+                <div class="teaser-section fade-in delay-5">
+                    <div class="teaser-header">
+                        <h3>✧ あなたの詳細運勢 ✧</h3>
+                        <p>さらに深い運命の全貌が見えています...</p>
+                    </div>
+                    
+                    <div class="teaser-grid">
+                        <div class="teaser-item">
+                            <p class="teaser-item-label">💕 恋愛運</p>
+                            <p class="teaser-item-value" id="teaser-love">運命の出会いが...</p>
+                            <p class="teaser-item-stars">★★★★☆</p>
+                        </div>
+                        <div class="teaser-item">
+                            <p class="teaser-item-label">💰 金運</p>
+                            <p class="teaser-item-value" id="teaser-money">思わぬ収入が...</p>
+                            <p class="teaser-item-stars">★★★☆☆</p>
+                        </div>
+                        <div class="teaser-item">
+                            <p class="teaser-item-label">💼 仕事運</p>
+                            <p class="teaser-item-value" id="teaser-work">大きな転機が...</p>
+                            <p class="teaser-item-stars">★★★★★</p>
+                        </div>
+                        <div class="teaser-item">
+                            <p class="teaser-item-label">💪 健康運</p>
+                            <p class="teaser-item-value" id="teaser-health">注意すべき時期...</p>
+                            <p class="teaser-item-stars">★★★☆☆</p>
+                        </div>
+                    </div>
+                    
+                    <div class="teaser-detail">
+                        <h4>✦ 2026年 あなたの運命の転機 ✦</h4>
+                        <div class="teaser-detail-text">
+                            <span id="teaser-turning-visible">あなたの命式から読み解くと、2026年は</span><span class="teaser-detail-blur" id="teaser-turning-blur">大きな変化の年になります。特に○月から○月にかけて、あなたの人生を左右する重要な出来事が起こる可能性が高いです。この時期に出会う人物は、あなたの...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="teaser-compatibility">
+                        <h4>💫 あなたと相性の良い属性</h4>
+                        <p style="font-size:0.8rem;color:var(--text-secondary);">恋愛・仕事で相性抜群の属性は...</p>
+                        <div class="teaser-compatibility-value">
+                            <span class="compat-badge" id="teaser-compat1">火</span>
+                            <span class="compat-badge" id="teaser-compat2">金</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 有料鑑定CTA -->
+            <div class="premium-cta fade-in delay-5">
+                <span class="premium-cta-badge">✦ 期間限定 ✦</span>
+                <h3>運命の全貌を解き明かす</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);">霊視鑑定士たけじいが<br>あなただけの詳細鑑定をお届け</p>
+                
+                <ul class="premium-cta-list">
+                    <li>恋愛運・金運・仕事運の詳細分析</li>
+                    <li>2026年の運命の転機と対策</li>
+                    <li>相性の良い人の特徴</li>
+                    <li>開運アドバイス</li>
+                    <li>あなただけへの特別メッセージ</li>
+                </ul>
+                
+                <div class="premium-cta-price">
+                    <span class="price-original">¥4,980</span>
+                    <span class="price-current">¥2,980</span>
+                    <span class="price-unit">（税込）</span>
+                </div>
+                
+                <a href="#" class="premium-btn" id="premium-btn" onclick="handlePremiumClick()">
+                    ✦ 詳細鑑定を受け取る ✦
+                </a>
+                
+                <p class="premium-cta-note">※ 鑑定結果はLINEでお届けします</p>
             </div>
             
             <p class="back-btn" onclick="showForm()">✧ もう一度診断する ✧</p>
@@ -998,10 +1342,75 @@ function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     document.getElementById('fortune-text').textContent = randomMessage;
     
+    // チラ見せ更新
+    updateTeaser(seimei.mainGogyo);
+    
     // 表示切り替え
     document.getElementById('loading').style.display = 'none';
     document.getElementById('result').style.display = 'block';
     window.scrollTo(0, 0);
+}
+
+// チラ見せデータ（五行別）
+const TEASER_DATA = {
+    '木': {
+        love: '新たな出会いの予感...',
+        money: '成長と共に増える...',
+        work: '才能が開花する時...',
+        health: '活力みなぎる時期...',
+        turning: '大きな成長の年になります。特に春から夏にかけて、あなたの人生を左右する重要な出来事が起こる可能性が高いです。この時期に出会う人物は、あなたの...',
+        compat: ['火', '水']
+    },
+    '火': {
+        love: '情熱的な恋の予感...',
+        money: '華やかな収入源が...',
+        work: '注目を集める時...',
+        health: 'エネルギー管理を...',
+        turning: '輝きを増す年になります。特に夏から秋にかけて、あなたの魅力が最大限に発揮される時期です。この時期のご縁は、あなたの人生を大きく...',
+        compat: ['木', '土']
+    },
+    '土': {
+        love: '安定した愛が育つ...',
+        money: '着実に積み上がる...',
+        work: '信頼が実を結ぶ...',
+        health: '安定の中に注意点...',
+        turning: '基盤を固める年になります。特に年の後半にかけて、これまでの努力が形になる時期です。この時期の決断は、今後10年の...',
+        compat: ['火', '金']
+    },
+    '金': {
+        love: '運命の人との縁が...',
+        money: '価値ある投資の時...',
+        work: '決断が評価される...',
+        health: '美と健康のバランス...',
+        turning: '決断の年になります。特に秋から冬にかけて、人生を左右する選択を迫られる時期です。この時期に選んだ道は、あなたの...',
+        compat: ['土', '水']
+    },
+    '水': {
+        love: '直感が導く縁が...',
+        money: '流れに乗る財運...',
+        work: '柔軟さが武器に...',
+        health: '心身の浄化期間...',
+        turning: '変化と適応の年になります。特に冬から春にかけて、予想外の展開がある時期です。この変化を恐れずに受け入れることで、あなたの...',
+        compat: ['金', '木']
+    }
+};
+
+// チラ見せ更新
+function updateTeaser(mainGogyo) {
+    const data = TEASER_DATA[mainGogyo];
+    
+    document.getElementById('teaser-love').textContent = data.love;
+    document.getElementById('teaser-money').textContent = data.money;
+    document.getElementById('teaser-work').textContent = data.work;
+    document.getElementById('teaser-health').textContent = data.health;
+    document.getElementById('teaser-turning-blur').textContent = data.turning;
+    document.getElementById('teaser-compat1').textContent = data.compat[0];
+    document.getElementById('teaser-compat2').textContent = data.compat[1];
+}
+
+// 有料ボタンクリック
+function handlePremiumClick() {
+    alert('決済ページへの連携は準備中です。\n\nStripeの設定が完了したら、ここから決済ページへ移動します。');
 }
 
 // フォーム再表示
