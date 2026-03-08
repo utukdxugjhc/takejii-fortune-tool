@@ -115,6 +115,126 @@
             50% { transform: scale(1.1) rotate(3deg); }
         }
         
+        /* 四柱推命・姓名鑑定シンボル背景 */
+        .symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .symbols-layer {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            animation: symbolsFloat 60s linear infinite;
+        }
+        
+        @keyframes symbolsFloat {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .symbol {
+            position: absolute;
+            font-family: 'Zen Old Mincho', serif;
+            color: rgba(159, 122, 234, 0.06);
+            font-size: 2rem;
+            user-select: none;
+        }
+        
+        .symbol.gold { color: rgba(246, 224, 94, 0.05); }
+        .symbol.pink { color: rgba(237, 100, 166, 0.05); }
+        .symbol.cyan { color: rgba(118, 228, 247, 0.04); }
+        
+        .symbol.large { font-size: 3.5rem; }
+        .symbol.medium { font-size: 2.5rem; }
+        .symbol.small { font-size: 1.5rem; }
+        
+        /* 陰陽マーク */
+        .yinyang {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .yinyang-1 {
+            top: 10%;
+            right: -30px;
+            background: conic-gradient(from 0deg, rgba(255,255,255,0.8) 0deg 180deg, rgba(13,10,26,0.8) 180deg 360deg);
+            animation: yinyangSpin 30s linear infinite;
+        }
+        
+        .yinyang-2 {
+            bottom: 20%;
+            left: -40px;
+            width: 120px;
+            height: 120px;
+            background: conic-gradient(from 90deg, rgba(159,122,234,0.8) 0deg 180deg, rgba(13,10,26,0.8) 180deg 360deg);
+            animation: yinyangSpin 25s linear infinite reverse;
+        }
+        
+        @keyframes yinyangSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 八卦風の装飾線 */
+        .bagua-lines {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+        }
+        
+        .bagua-lines::before {
+            content: '☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷';
+            position: absolute;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 1rem;
+            white-space: nowrap;
+        }
+        
+        .bagua-top {
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bagua-bottom {
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* 五行シンボル */
+        .gogyo-bg {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: 4rem;
+            opacity: 0.025;
+            font-family: 'Kaisei Decol', serif;
+            font-weight: 700;
+        }
+        
+        .gogyo-wood { top: 15%; left: 5%; color: #4ade80; }
+        .gogyo-fire { top: 30%; right: 8%; color: #f87171; }
+        .gogyo-earth { bottom: 40%; left: 10%; color: #fbbf24; }
+        .gogyo-metal { bottom: 25%; right: 5%; color: #e5e5e5; }
+        .gogyo-water { top: 50%; left: 50%; transform: translateX(-50%); color: #60a5fa; }
+        
         .container {
             max-width: 440px;
             margin: 0 auto;
@@ -864,6 +984,65 @@
 <body>
     <div class="stars"></div>
     <div class="aura"></div>
+    
+    <!-- 四柱推命シンボル -->
+    <div class="symbols">
+        <div class="symbols-layer">
+            <!-- 十干 -->
+            <span class="symbol large" style="top:5%;left:10%;">甲</span>
+            <span class="symbol gold medium" style="top:15%;left:70%;">乙</span>
+            <span class="symbol pink" style="top:25%;left:30%;">丙</span>
+            <span class="symbol" style="top:35%;left:85%;">丁</span>
+            <span class="symbol cyan medium" style="top:45%;left:15%;">戊</span>
+            <span class="symbol gold" style="top:55%;left:60%;">己</span>
+            <span class="symbol large" style="top:65%;left:40%;">庚</span>
+            <span class="symbol pink medium" style="top:75%;left:80%;">辛</span>
+            <span class="symbol" style="top:85%;left:20%;">壬</span>
+            <span class="symbol cyan" style="top:95%;left:55%;">癸</span>
+            <!-- 十二支 -->
+            <span class="symbol gold large" style="top:8%;left:45%;">子</span>
+            <span class="symbol" style="top:18%;left:90%;">丑</span>
+            <span class="symbol pink medium" style="top:28%;left:5%;">寅</span>
+            <span class="symbol" style="top:38%;left:50%;">卯</span>
+            <span class="symbol cyan large" style="top:48%;left:75%;">辰</span>
+            <span class="symbol gold" style="top:58%;left:25%;">巳</span>
+            <span class="symbol pink" style="top:68%;left:95%;">午</span>
+            <span class="symbol medium" style="top:78%;left:35%;">未</span>
+            <span class="symbol gold" style="top:88%;left:65%;">申</span>
+            <span class="symbol cyan medium" style="top:12%;left:58%;">酉</span>
+            <span class="symbol pink large" style="top:42%;left:8%;">戌</span>
+            <span class="symbol" style="top:72%;left:52%;">亥</span>
+            <!-- 五行 -->
+            <span class="symbol gold large" style="top:20%;left:48%;">木</span>
+            <span class="symbol pink large" style="top:50%;left:92%;">火</span>
+            <span class="symbol large" style="top:80%;left:12%;">土</span>
+            <span class="symbol cyan large" style="top:30%;left:78%;">金</span>
+            <span class="symbol gold large" style="top:60%;left:3%;">水</span>
+            <!-- 陰陽 -->
+            <span class="symbol pink medium" style="top:40%;left:68%;">陰</span>
+            <span class="symbol gold medium" style="top:70%;left:28%;">陽</span>
+            <!-- 命式関連 -->
+            <span class="symbol small" style="top:22%;left:18%;">命</span>
+            <span class="symbol gold small" style="top:52%;left:42%;">運</span>
+            <span class="symbol pink small" style="top:82%;left:72%;">縁</span>
+            <span class="symbol cyan small" style="top:32%;left:62%;">魂</span>
+        </div>
+    </div>
+    
+    <!-- 陰陽マーク -->
+    <div class="yinyang yinyang-1"></div>
+    <div class="yinyang yinyang-2"></div>
+    
+    <!-- 八卦 -->
+    <div class="bagua-lines bagua-top"></div>
+    <div class="bagua-lines bagua-bottom"></div>
+    
+    <!-- 五行シンボル -->
+    <div class="gogyo-bg gogyo-wood">木</div>
+    <div class="gogyo-bg gogyo-fire">火</div>
+    <div class="gogyo-bg gogyo-earth">土</div>
+    <div class="gogyo-bg gogyo-metal">金</div>
+    <div class="gogyo-bg gogyo-water">水</div>
     
     <div class="container">
         <header>
