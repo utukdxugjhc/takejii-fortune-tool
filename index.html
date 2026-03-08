@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>運命の扉 - 魂の属性診断 | 霊視鑑定士たけじい</title>
+    <title>恋愛運命診断 | 姓名鑑定×四柱推命 たけじい</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -868,13 +868,17 @@
     <div class="container">
         <header>
             <div class="header-symbol">🔮</div>
-            <h1>運命の扉</h1>
-            <p>— 魂の属性診断 —</p>
+            <h1>恋愛運命診断</h1>
+            <p>— 姓名鑑定 × 四柱推命 —</p>
         </header>
         
         <!-- 入力フォーム -->
         <div id="form-section">
             <div class="card">
+                <div style="text-align:center; margin-bottom:1.25rem;">
+                    <p style="font-size:0.95rem; color:var(--accent-gold); letter-spacing:0.08em;">名前と生年月日から恋の傾向を無料診断</p>
+                    <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.4rem;">恋愛タイプ / つまずきやすい恋 / 惹かれやすい相手 / 今の恋愛フェーズが分かります</p>
+                </div>
                 <div class="form-group">
                     <label>お名前（漢字）</label>
                     <div class="row">
@@ -906,7 +910,7 @@
                     </div>
                 </div>
                 
-                <button class="btn" onclick="startDiagnose()">運命を紐解く</button>
+                <button class="btn" onclick="startDiagnose()">恋愛傾向を無料診断する</button>
             </div>
         </div>
         
@@ -922,12 +926,12 @@
         <div id="result">
             <div class="card">
                 <div class="result-intro fade-in">
-                    <p>運命の扉が開かれました</p>
+                    <p>あなたの恋愛傾向が見えてきました</p>
                     <p class="result-name" id="result-name"></p>
                 </div>
                 
                 <div class="destiny-box fade-in delay-1">
-                    <p class="destiny-label">あなたの魂の属性</p>
+                    <p class="destiny-label">あなたの恋愛属性</p>
                     <p class="destiny-value" id="main-gogyo"></p>
                     <p class="destiny-image" id="gogyo-image"></p>
                 </div>
@@ -938,21 +942,21 @@
                         <p class="stat-value" id="total-strokes"></p>
                     </div>
                     <div class="stat-item">
-                        <p class="stat-label">✧ 運勢 ✧</p>
-                        <p class="stat-value" id="luck"></p>
+                        <p class="stat-label">✧ 恋の温度感 ✧</p>
+                        <p class="stat-value" id="love-temperature"></p>
                     </div>
                     <div class="stat-item">
                         <p class="stat-label">✧ 日干 ✧</p>
                         <p class="stat-value" id="nikkan"></p>
                     </div>
                     <div class="stat-item">
-                        <p class="stat-label">✧ 日干五行 ✧</p>
-                        <p class="stat-value" id="nikkan-gogyo"></p>
+                        <p class="stat-label">✧ 恋愛フェーズ ✧</p>
+                        <p class="stat-value" id="love-phase"></p>
                     </div>
                 </div>
                 
                 <div class="traits-section fade-in delay-3">
-                    <h3>あなたの本質</h3>
+                    <h3>恋で出やすい性質</h3>
                     <div id="traits-container" style="text-align:center;"></div>
                 </div>
                 
@@ -964,50 +968,50 @@
                 </div>
                 
                 <div class="fortune-message fade-in delay-4">
-                    <h3>✦ 今月のメッセージ ✦</h3>
+                    <h3>✦ 恋を進めるヒント ✦</h3>
                     <p id="fortune-text"></p>
                 </div>
                 
                 <!-- チラ見せセクション -->
                 <div class="teaser-section fade-in delay-5">
                     <div class="teaser-header">
-                        <h3>✧ あなたの詳細運勢 ✧</h3>
-                        <p>さらに深い運命の全貌が見えています...</p>
+                        <h3>✧ 無料診断の続き ✧</h3>
+                        <p>相性・時期・恋の進め方はこの先にあります</p>
                     </div>
                     
                     <div class="teaser-grid">
                         <div class="teaser-item">
-                            <p class="teaser-item-label">💕 恋愛運</p>
-                            <p class="teaser-item-value" id="teaser-love">運命の出会いが...</p>
+                            <p class="teaser-item-label">💕 恋愛タイプ</p>
+                            <p class="teaser-item-value" id="teaser-type">一途で慎重な恋...</p>
                             <p class="teaser-item-stars">★★★★☆</p>
                         </div>
                         <div class="teaser-item">
-                            <p class="teaser-item-label">💰 金運</p>
-                            <p class="teaser-item-value" id="teaser-money">思わぬ収入が...</p>
+                            <p class="teaser-item-label">⚠ つまずきやすい恋</p>
+                            <p class="teaser-item-value" id="teaser-mistake">相手に合わせすぎる...</p>
                             <p class="teaser-item-stars">★★★☆☆</p>
                         </div>
                         <div class="teaser-item">
-                            <p class="teaser-item-label">💼 仕事運</p>
-                            <p class="teaser-item-value" id="teaser-work">大きな転機が...</p>
+                            <p class="teaser-item-label">💫 惹かれやすい相手</p>
+                            <p class="teaser-item-value" id="teaser-attracted">包容力のある人...</p>
                             <p class="teaser-item-stars">★★★★★</p>
                         </div>
                         <div class="teaser-item">
-                            <p class="teaser-item-label">💪 健康運</p>
-                            <p class="teaser-item-value" id="teaser-health">注意すべき時期...</p>
+                            <p class="teaser-item-label">🌙 次の恋愛フェーズ</p>
+                            <p class="teaser-item-value" id="teaser-phase">関係が動く準備期...</p>
                             <p class="teaser-item-stars">★★★☆☆</p>
                         </div>
                     </div>
                     
                     <div class="teaser-detail">
-                        <h4>✦ 2026年 あなたの運命の転機 ✦</h4>
+                        <h4>✦ LINEで分かる恋が動く時期 ✦</h4>
                         <div class="teaser-detail-text">
-                            <span id="teaser-turning-visible">あなたの命式から読み解くと、2026年は</span><span class="teaser-detail-blur" id="teaser-turning-blur">大きな変化の年になります。特に○月から○月にかけて、あなたの人生を左右する重要な出来事が起こる可能性が高いです。この時期に出会う人物は、あなたの...</span>
+                            <span id="teaser-turning-visible">あなたの名前と命式を重ねると、次に恋が動きやすいのは</span><span class="teaser-detail-blur" id="teaser-timing-blur">春の終わりから初夏にかけてです。この時期は、連絡が増える・相手の反応が変わる・新しいご縁が入るなど、恋愛の流れが変わりやすくなります。特にあなたの場合は...</span>
                         </div>
                     </div>
                     
                     <div class="teaser-compatibility">
-                        <h4>💫 あなたと相性の良い属性</h4>
-                        <p style="font-size:0.8rem;color:var(--text-secondary);">恋愛・仕事で相性抜群の属性は...</p>
+                        <h4>💫 LINEで分かる相性の良い相手</h4>
+                        <p style="font-size:0.8rem;color:var(--text-secondary);">恋愛で縁が深い相手の特徴は...</p>
                         <div class="teaser-compatibility-value">
                             <span class="compat-badge" id="teaser-compat1">火</span>
                             <span class="compat-badge" id="teaser-compat2">金</span>
@@ -1018,36 +1022,35 @@
             
             <!-- 有料鑑定CTA -->
             <div class="premium-cta fade-in delay-5">
-                <span class="premium-cta-badge">✦ 期間限定 ✦</span>
-                <h3>運命の全貌を解き明かす</h3>
-                <p style="font-size:0.85rem;color:var(--text-secondary);">霊視鑑定士たけじいが<br>あなただけの詳細鑑定をお届け</p>
+                <span class="premium-cta-badge">✦ 登録後すぐ自動配信 ✦</span>
+                <h3>LINEで恋愛診断の続きを受け取る</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);">姓名鑑定 × 四柱推命で<br>相性・時期・恋の進め方を無料でお届け</p>
                 
                 <ul class="premium-cta-list">
-                    <li>恋愛運・金運・仕事運の詳細分析</li>
-                    <li>2026年の運命の転機と対策</li>
-                    <li>相性の良い人の特徴</li>
-                    <li>開運アドバイス</li>
-                    <li>あなただけへの特別メッセージ</li>
+                    <li>恋が動きやすい時期</li>
+                    <li>相性の良い相手の特徴</li>
+                    <li>今やるべき恋愛行動</li>
+                    <li>悩み別の個別メッセージ</li>
+                    <li>初回限定のPDF鑑定案内</li>
                 </ul>
                 
                 <div class="premium-cta-price">
-                    <span class="price-original">¥4,980</span>
-                    <span class="price-current">¥2,980</span>
-                    <span class="price-unit">（税込）</span>
+                    <span class="price-current">無料</span>
+                    <span class="price-unit">で受け取る</span>
                 </div>
                 
                 <a href="#" class="premium-btn" id="premium-btn" onclick="handlePremiumClick()">
-                    ✦ 詳細鑑定を受け取る ✦
+                    ✦ LINEで続きを見る ✦
                 </a>
                 
-                <p class="premium-cta-note">※ 鑑定結果はLINEでお届けします</p>
+                <p class="premium-cta-note">※ 登録後すぐに続きを自動送信します</p>
             </div>
             
             <p class="back-btn" onclick="showForm()">✧ もう一度診断する ✧</p>
         </div>
         
         <footer>
-            <p>霊視鑑定士たけじい</p>
+            <p>姓名鑑定 × 四柱推命 たけじい</p>
         </footer>
     </div>
 
@@ -1179,29 +1182,29 @@ const KANSHI_60 = [
 // 月のメッセージ
 const FORTUNE_MESSAGES = {
     '木': [
-        'あなたの内に眠る種が芽吹こうとしています。今月は新しい挑戦を恐れず、一歩踏み出す勇気が幸運を呼びます。',
-        '成長のエネルギーが高まっています。学びの機会を大切に。思い切った決断が未来を切り開きます。',
-        '春の訪れのように、あなたの周りで新しい出会いの予感。心を開いて受け入れてみて。'
+        '恋を育てる力が高まっています。焦って答えを急がず、少しずつ関係を深めることでご縁が形になります。',
+        '新しい出会いの流れが入りやすい時期です。自分から心を開くほど、恋の選択肢が増えていきます。',
+        '相手に合わせすぎるより、あなたの素直な反応を見せることが恋の進展につながります。'
     ],
     '火': [
-        'あなたの情熱が周囲を照らしています。今月は自分の魅力を信じて、表現することで良縁が生まれます。',
-        '輝きを恐れないで。あなたらしく光ることで、同じ波長を持つ人が引き寄せられます。',
-        '行動力が高まる時期。直感を信じて動くと、思わぬ幸運が舞い込みます。'
+        '恋愛の主導権を握りやすい時期です。気持ちを隠しすぎず、熱量を正しい相手に向けると流れが変わります。',
+        'あなたの魅力が伝わりやすい反面、勢いが強すぎると空回りしやすい時期でもあります。押し引きを意識してください。',
+        '直感で動いた恋が実りやすい配置です。気になる相手には待ちすぎず、軽く接点を作るのが吉です。'
     ],
     '土': [
-        '安定のエネルギーがあなたを包んでいます。今月は大切な人との絆を深めることで、心の安らぎを得られます。',
-        '地に足をつけた判断が吉。焦らず、一つずつ着実に進むことで大きな成果につながります。',
-        'あなたの包容力が誰かを救います。優しさを与えることで、それ以上のものが返ってきます。'
+        '安定した関係を望む気持ちが強まっています。恋は急展開より、信頼を積み上げるほど形になります。',
+        '相手を支えすぎると都合の良い存在になりやすい時期です。優しさと境界線を両立させることが大切です。',
+        '長く続くご縁を見極めやすい流れです。安心感をくれる相手との接点を丁寧に育ててください。'
     ],
     '金': [
-        '研ぎ澄まされた感性が冴える時期。美しいものに触れることで、インスピレーションが湧きます。',
-        '決断の時が近づいています。直感を信じて選んだ道が、あなたを輝かせます。',
-        '本物を見抜く力が高まっています。自分の価値観を大切に、妥協しない姿勢が幸運を呼びます。'
+        '恋愛で妥協しない気持ちが強まっています。本当に大切にされる関係だけを選ぶほど運が整います。',
+        '相手を見る目が冴えています。違和感を見逃さず、言葉より行動で相手を判断することが恋の守りになります。',
+        '選ぶ力が強まる時期です。追いかける恋より、自然に敬意が返ってくる相手に意識を向けてください。'
     ],
     '水': [
-        '直感力が最高潮に。ふと感じた予感を大切に。それがあなたを正しい方向へ導きます。',
-        '柔軟に流れに身を任せる時期。変化を恐れず受け入れることで、新しい世界が開けます。',
-        '深い共感力で誰かの心を癒すことができます。あなたの存在そのものが、誰かの希望になっています。'
+        '相手の気持ちを感じ取りやすい時期です。ただし深読みしすぎず、事実を確認しながら恋を進めると安定します。',
+        '直感が恋愛のヒントになります。気になる違和感やタイミングのズレは、今後の判断材料として大切にしてください。',
+        '自然体でいるほど縁がつながる流れです。無理に合わせるより、あなたの静かな魅力が伝わる場を選んでください。'
     ]
 };
 
@@ -1292,6 +1295,7 @@ function startDiagnose() {
 function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     const seimei = calcSeimei(sei, mei, seiReading, meiReading);
     const shichusuimei = calcShichusuimei(year, month, day);
+    const teaser = TEASER_DATA[seimei.mainGogyo];
     
     // 結果表示
     document.getElementById('result-name').textContent = `${sei} ${mei} 様`;
@@ -1299,15 +1303,15 @@ function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     document.getElementById('gogyo-image').textContent = GOGYO_DATA[seimei.mainGogyo].image;
     document.getElementById('total-strokes').textContent = `${seimei.total}画`;
     
-    const luckEl = document.getElementById('luck');
-    luckEl.textContent = seimei.luck;
-    luckEl.className = 'stat-value';
-    if (seimei.luck === '大吉') luckEl.classList.add('luck-great');
-    else if (seimei.luck === '吉') luckEl.classList.add('luck-good');
-    else luckEl.classList.add('luck-bad');
+    const temperatureEl = document.getElementById('love-temperature');
+    temperatureEl.textContent = teaser.temperature;
+    temperatureEl.className = 'stat-value';
+    if (teaser.temperature.includes('高')) temperatureEl.classList.add('luck-great');
+    else if (teaser.temperature.includes('安定')) temperatureEl.classList.add('luck-good');
+    else temperatureEl.classList.add('luck-bad');
     
     document.getElementById('nikkan').textContent = shichusuimei.nikkan;
-    document.getElementById('nikkan-gogyo').textContent = shichusuimei.nikkanGogyo;
+    document.getElementById('love-phase').textContent = teaser.phaseLabel;
     
     // 特徴タグ
     const traitsContainer = document.getElementById('traits-container');
@@ -1351,47 +1355,59 @@ function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     window.scrollTo(0, 0);
 }
 
+const LINE_URL = '#';
+
 // チラ見せデータ（五行別）
 const TEASER_DATA = {
     '木': {
-        love: '新たな出会いの予感...',
-        money: '成長と共に増える...',
-        work: '才能が開花する時...',
-        health: '活力みなぎる時期...',
-        turning: '大きな成長の年になります。特に春から夏にかけて、あなたの人生を左右する重要な出来事が起こる可能性が高いです。この時期に出会う人物は、あなたの...',
-        compat: ['火', '水']
+        temperature: '上昇中',
+        type: '育てて深まる恋愛型...',
+        mistake: '相手に期待をかけすぎる...',
+        attracted: '誠実で落ち着いた人...',
+        phase: '出会いの芽が育つ準備期...',
+        phaseLabel: '準備期',
+        timing: '春の終わりから初夏にかけて、会話が増える・紹介が入る・気になる相手との距離が縮まりやすい時期です。自分から軽く動くことで流れが本格化します。あなたの場合は特に...',
+        compat: ['包容力がある人', '会話が丁寧な人']
     },
     '火': {
-        love: '情熱的な恋の予感...',
-        money: '華やかな収入源が...',
-        work: '注目を集める時...',
-        health: 'エネルギー管理を...',
-        turning: '輝きを増す年になります。特に夏から秋にかけて、あなたの魅力が最大限に発揮される時期です。この時期のご縁は、あなたの人生を大きく...',
-        compat: ['木', '土']
+        temperature: '高まる時',
+        type: '惹きつけて動かす恋愛型...',
+        mistake: '熱量が先に伝わりすぎる...',
+        attracted: '反応が早く明るい人...',
+        phase: '関係が一気に進みやすい加速期...',
+        phaseLabel: '加速期',
+        timing: '初夏から夏にかけて、あなたの魅力が伝わりやすくなる時期です。連絡や会う回数が増えるほど恋の温度が上がります。勢いが出る一方で、あなたの場合は...',
+        compat: ['行動力がある人', '素直に好意を返す人']
     },
     '土': {
-        love: '安定した愛が育つ...',
-        money: '着実に積み上がる...',
-        work: '信頼が実を結ぶ...',
-        health: '安定の中に注意点...',
-        turning: '基盤を固める年になります。特に年の後半にかけて、これまでの努力が形になる時期です。この時期の決断は、今後10年の...',
-        compat: ['火', '金']
+        temperature: '安定上昇',
+        type: '信頼重視で育てる恋愛型...',
+        mistake: '尽くしすぎて疲れやすい...',
+        attracted: '安心感をくれる人...',
+        phase: '信頼が試される見極め期...',
+        phaseLabel: '見極め期',
+        timing: '夏の終わりから秋口にかけて、長く続く相手かどうかがはっきりしやすい時期です。曖昧な関係ほど答えが出ます。あなたの場合は特に...',
+        compat: ['約束を守る人', '生活感が近い人']
     },
     '金': {
-        love: '運命の人との縁が...',
-        money: '価値ある投資の時...',
-        work: '決断が評価される...',
-        health: '美と健康のバランス...',
-        turning: '決断の年になります。特に秋から冬にかけて、人生を左右する選択を迫られる時期です。この時期に選んだ道は、あなたの...',
-        compat: ['土', '水']
+        temperature: '選別の時',
+        type: '本命だけを見極める恋愛型...',
+        mistake: '厳しく見すぎて距離が開く...',
+        attracted: '品があり誠実な人...',
+        phase: '本命が残る決断期...',
+        phaseLabel: '決断期',
+        timing: '秋から初冬にかけて、続ける恋と手放す恋が分かれやすい時期です。違和感を見逃さないほど恋愛運が整います。あなたの場合は特に...',
+        compat: ['礼儀を大切にする人', '価値観が近い人']
     },
     '水': {
-        love: '直感が導く縁が...',
-        money: '流れに乗る財運...',
-        work: '柔軟さが武器に...',
-        health: '心身の浄化期間...',
-        turning: '変化と適応の年になります。特に冬から春にかけて、予想外の展開がある時期です。この変化を恐れずに受け入れることで、あなたの...',
-        compat: ['金', '木']
+        temperature: '静かに上昇',
+        type: '感覚でつながる恋愛型...',
+        mistake: '深読みしすぎて動けない...',
+        attracted: '感受性が近い人...',
+        phase: '気持ちを確かめる調整期...',
+        phaseLabel: '調整期',
+        timing: '冬から春先にかけて、予想外の連絡や再接続が起きやすい流れです。受け身すぎず、小さなリアクションを返すと恋が動きます。あなたの場合は特に...',
+        compat: ['話を聞ける人', '感情表現が柔らかい人']
     }
 };
 
@@ -1399,18 +1415,22 @@ const TEASER_DATA = {
 function updateTeaser(mainGogyo) {
     const data = TEASER_DATA[mainGogyo];
     
-    document.getElementById('teaser-love').textContent = data.love;
-    document.getElementById('teaser-money').textContent = data.money;
-    document.getElementById('teaser-work').textContent = data.work;
-    document.getElementById('teaser-health').textContent = data.health;
-    document.getElementById('teaser-turning-blur').textContent = data.turning;
+    document.getElementById('teaser-type').textContent = data.type;
+    document.getElementById('teaser-mistake').textContent = data.mistake;
+    document.getElementById('teaser-attracted').textContent = data.attracted;
+    document.getElementById('teaser-phase').textContent = data.phase;
+    document.getElementById('teaser-timing-blur').textContent = data.timing;
     document.getElementById('teaser-compat1').textContent = data.compat[0];
     document.getElementById('teaser-compat2').textContent = data.compat[1];
 }
 
 // 有料ボタンクリック
 function handlePremiumClick() {
-    alert('決済ページへの連携は準備中です。\n\nStripeの設定が完了したら、ここから決済ページへ移動します。');
+    if (LINE_URL && LINE_URL !== '#') {
+        window.open(LINE_URL, '_blank');
+        return;
+    }
+    alert('LINE公式アカウントのURLを設定してください。\n\nindex.html 内の LINE_URL をあなたのLINEリンクに置き換えると、このボタンから直接遷移できます。');
 }
 
 // フォーム再表示
