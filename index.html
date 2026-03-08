@@ -859,6 +859,55 @@
             margin-top: 0.75rem;
             opacity: 0.7;
         }
+
+        .result-id-box {
+            margin: 1rem 0 1.1rem;
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            background: rgba(13, 10, 26, 0.7);
+            border: 1px solid rgba(246, 224, 94, 0.22);
+        }
+
+        .result-id-label {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+
+        .result-id-code {
+            margin-top: 0.4rem;
+            text-align: center;
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.18em;
+            color: var(--text-primary);
+        }
+
+        .result-id-help {
+            margin-top: 0.45rem;
+            text-align: center;
+            font-size: 0.74rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .result-id-copy {
+            margin-top: 0.8rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(159, 122, 234, 0.16);
+            border: 1px solid rgba(159, 122, 234, 0.38);
+            border-radius: 999px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .result-id-copy:hover {
+            background: rgba(159, 122, 234, 0.28);
+        }
     </style>
 </head>
 <body>
@@ -1038,12 +1087,19 @@
                     <span class="price-current">無料</span>
                     <span class="price-unit">で受け取る</span>
                 </div>
+
+                <div class="result-id-box">
+                    <p class="result-id-label">LINEで送る鑑定番号</p>
+                    <p class="result-id-code" id="result-id-code">K----</p>
+                    <p class="result-id-help" id="result-id-help">診断後に発行された鑑定番号をLINEで送ると、あなた専用の続きを受け取れます</p>
+                    <button type="button" class="result-id-copy" id="copy-result-id-btn" onclick="copyResultId()">鑑定番号をコピーする</button>
+                </div>
                 
                 <a href="#" class="premium-btn" id="premium-btn" onclick="handlePremiumClick()">
                     ✦ LINEで続きを見る ✦
                 </a>
                 
-                <p class="premium-cta-note">※ 登録後すぐに続きを自動送信します</p>
+                <p class="premium-cta-note">※ LINE追加後に鑑定番号を送ると、続きを自動返信します</p>
             </div>
             
             <p class="back-btn" onclick="showForm()">✧ もう一度診断する ✧</p>
@@ -1268,6 +1324,10 @@ function calcShichusuimei(year, month, day) {
     };
 }
 
+const LINE_URL = 'https://lin.ee/1b4Le55';
+const RESULT_API_URL = '#';
+let currentDiagnosisResult = null;
+
 // 診断開始（ローディング付き）
 function startDiagnose() {
     const sei = document.getElementById('sei').value.trim();
@@ -1292,7 +1352,7 @@ function startDiagnose() {
 }
 
 // 診断実行
-function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
+async function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     const seimei = calcSeimei(sei, mei, seiReading, meiReading);
     const shichusuimei = calcShichusuimei(year, month, day);
     const teaser = TEASER_DATA[seimei.mainGogyo];
@@ -1348,14 +1408,48 @@ function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     
     // チラ見せ更新
     updateTeaser(seimei.mainGogyo);
+
+    const resultId = generateResultId(sei, mei, year, month, day, seimei.mainGogyo);
+    currentDiagnosisResult = {
+        action: 'save_result',
+        resultId,
+        lineKeyword: resultId,
+        profile: {
+            sei,
+            mei,
+            seiReading,
+            meiReading,
+            birthDate: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+        },
+        summary: {
+            mainGogyo: seimei.mainGogyo,
+            subGogyo: seimei.subGogyo || '',
+            totalStrokes: seimei.total,
+            nikkan: shichusuimei.nikkan,
+            yearKanshi: shichusuimei.yearKanshi,
+            monthKanshi: shichusuimei.monthKanshi,
+            dayKanshi: shichusuimei.dayKanshi,
+            loveTemperature: teaser.temperature,
+            lovePhase: teaser.phaseLabel,
+            teaserType: teaser.type,
+            teaserMistake: teaser.mistake,
+            teaserAttracted: teaser.attracted,
+            teaserTiming: teaser.timing,
+            compat1: teaser.compat[0],
+            compat2: teaser.compat[1],
+            fortuneMessage: randomMessage
+        },
+        createdAt: new Date().toISOString()
+    };
+
+    const saveState = await saveDiagnosisResult(currentDiagnosisResult);
+    renderResultIdState(resultId, saveState);
     
     // 表示切り替え
     document.getElementById('loading').style.display = 'none';
     document.getElementById('result').style.display = 'block';
     window.scrollTo(0, 0);
 }
-
-const LINE_URL = 'https://lin.ee/1b4Le55';
 
 // チラ見せデータ（五行別）
 const TEASER_DATA = {
@@ -1424,8 +1518,74 @@ function updateTeaser(mainGogyo) {
     document.getElementById('teaser-compat2').textContent = data.compat[1];
 }
 
+function generateResultId(sei, mei, year, month, day, mainGogyo) {
+    const seed = `${sei}${mei}${year}${month}${day}${mainGogyo}${Date.now()}`;
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+        hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+        hash |= 0;
+    }
+    return `K${Math.abs(hash).toString(36).toUpperCase().slice(0, 6).padEnd(6, '0')}`;
+}
+
+async function saveDiagnosisResult(payload) {
+    localStorage.setItem('takejiiLastDiagnosisResult', JSON.stringify(payload));
+    if (!RESULT_API_URL || RESULT_API_URL === '#') {
+        return { ok: false, mode: 'local-only' };
+    }
+
+    try {
+        const response = await fetch(RESULT_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        return {
+            ok: response.ok,
+            mode: response.ok ? 'remote-saved' : 'remote-error'
+        };
+    } catch (error) {
+        console.error('Failed to save diagnosis result', error);
+        return { ok: false, mode: 'remote-error' };
+    }
+}
+
+function renderResultIdState(resultId, saveState) {
+    document.getElementById('result-id-code').textContent = resultId;
+    const help = document.getElementById('result-id-help');
+
+    if (saveState.mode === 'remote-saved') {
+        help.textContent = 'この鑑定番号をLINEで送ると、あなた専用の続きを自動返信します';
+        return;
+    }
+
+    if (saveState.mode === 'remote-error') {
+        help.textContent = '保存に失敗した可能性があります。まず鑑定番号を控えてからLINEに進んでください';
+        return;
+    }
+
+    help.textContent = 'GAS未設定のためローカル保存のみです。鑑定番号を控えてからLINE導線の接続を進めてください';
+}
+
+async function copyResultId() {
+    const resultId = document.getElementById('result-id-code').textContent;
+    try {
+        await navigator.clipboard.writeText(resultId);
+        alert(`鑑定番号 ${resultId} をコピーしました。\n\nLINE追加後、この番号を送ると続きを受け取れます。`);
+    } catch (error) {
+        alert(`鑑定番号: ${resultId}\n\nこの番号を手動でコピーしてLINEに送ってください。`);
+    }
+}
+
 // 有料ボタンクリック
-function handlePremiumClick() {
+async function handlePremiumClick() {
+    if (!currentDiagnosisResult) {
+        alert('先に無料診断を実行してください。');
+        return;
+    }
+
+    await copyResultId();
+
     if (LINE_URL && LINE_URL !== '#') {
         window.open(LINE_URL, '_blank');
         return;
@@ -1437,6 +1597,7 @@ function handlePremiumClick() {
 function showForm() {
     document.getElementById('form-section').style.display = 'block';
     document.getElementById('result').style.display = 'none';
+    currentDiagnosisResult = null;
     window.scrollTo(0, 0);
 }
 </script>
