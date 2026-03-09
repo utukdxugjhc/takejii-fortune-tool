@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五行の属性ガイド | たけじい</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0a1a;
+      --panel: rgba(25, 18, 45, 0.88);
+      --text: #f5f0ff;
+      --sub: #b8a8d4;
+      --gold: #ffd700;
+      --pink: #ed64a6;
+      --purple: #9f7aea;
+      --cyan: #76e4f7;
+      --border: rgba(159,122,234,0.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Zen Old Mincho', serif;
+      background: radial-gradient(circle at top, rgba(159,122,234,0.18), transparent 45%), var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 16px 64px;
+    }
+    .hero, .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 0 32px rgba(159,122,234,0.08);
+    }
+    .hero h1, .card h2 {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--gold);
+      margin: 0 0 10px;
+      letter-spacing: 0.06em;
+    }
+    .lead, .sub {
+      color: var(--sub);
+      font-size: 0.95rem;
+    }
+    .map {
+      margin-top: 22px;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(10, 8, 24, 0.75);
+      border: 1px solid rgba(118,228,247,0.16);
+    }
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .legend-item {
+      background: rgba(13, 10, 26, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--sub);
+      font-size: 0.84rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .type-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #150f24;
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+    }
+    .card p {
+      margin: 0 0 10px;
+      color: var(--sub);
+      font-size: 0.9rem;
+    }
+    .card strong {
+      color: var(--text);
+    }
+    .cta {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>五行の属性ガイド</h1>
+      <p class="lead">無料診断のLINEで届く内容は、あなた個人の未来予測ではなく、属性タイプごとの恋愛傾向と相関の見方です。</p>
+      <div class="map">
+        <svg viewBox="0 0 760 420" width="100%" role="img" aria-label="五行の相関図">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f6e05e"/>
+              <stop offset="100%" stop-color="#ed64a6"/>
+            </linearGradient>
+            <marker id="arrowGold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 Z" fill="#f6e05e"/>
+            </marker>
+            <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 Z" fill="#76e4f7"/>
+            </marker>
+          </defs>
+          <rect x="0" y="0" width="760" height="420" fill="#0d0a1a"/>
+          <text x="380" y="36" fill="#f5f0ff" font-size="24" text-anchor="middle" font-family="Kaisei Decol">相生と相剋のイメージ</text>
+          <text x="380" y="62" fill="#b8a8d4" font-size="14" text-anchor="middle" font-family="Zen Old Mincho">黄の矢印は育て合う流れ / 青の矢印は刺激し合う流れ</text>
+          <line x1="190" y1="120" x2="380" y2="80" stroke="#f6e05e" stroke-width="4" marker-end="url(#arrowGold)"/>
+          <line x1="380" y1="80" x2="570" y2="120" stroke="#f6e05e" stroke-width="4" marker-end="url(#arrowGold)"/>
+          <line x1="570" y1="120" x2="530" y2="300" stroke="#f6e05e" stroke-width="4" marker-end="url(#arrowGold)"/>
+          <line x1="530" y1="300" x2="230" y2="300" stroke="#f6e05e" stroke-width="4" marker-end="url(#arrowGold)"/>
+          <line x1="230" y1="300" x2="190" y2="120" stroke="#f6e05e" stroke-width="4" marker-end="url(#arrowGold)"/>
+          <line x1="190" y1="120" x2="570" y2="120" stroke="#76e4f7" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrowCyan)"/>
+          <line x1="570" y1="120" x2="230" y2="300" stroke="#76e4f7" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrowCyan)"/>
+          <line x1="230" y1="300" x2="380" y2="80" stroke="#76e4f7" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrowCyan)"/>
+          <line x1="380" y1="80" x2="530" y2="300" stroke="#76e4f7" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrowCyan)"/>
+          <line x1="530" y1="300" x2="190" y2="120" stroke="#76e4f7" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrowCyan)"/>
+          <g>
+            <circle cx="190" cy="120" r="52" fill="url(#g1)"/><text x="190" y="128" fill="#140d20" font-size="34" text-anchor="middle" font-family="Kaisei Decol">木</text>
+            <circle cx="380" cy="80" r="52" fill="url(#g1)"/><text x="380" y="88" fill="#140d20" font-size="34" text-anchor="middle" font-family="Kaisei Decol">火</text>
+            <circle cx="570" cy="120" r="52" fill="url(#g1)"/><text x="570" y="128" fill="#140d20" font-size="34" text-anchor="middle" font-family="Kaisei Decol">土</text>
+            <circle cx="530" cy="300" r="52" fill="url(#g1)"/><text x="530" y="308" fill="#140d20" font-size="34" text-anchor="middle" font-family="Kaisei Decol">金</text>
+            <circle cx="230" cy="300" r="52" fill="url(#g1)"/><text x="230" y="308" fill="#140d20" font-size="34" text-anchor="middle" font-family="Kaisei Decol">水</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <div class="legend-item">相生: 木 → 火 → 土 → 金 → 水 → 木</div>
+        <div class="legend-item">相剋: 木 ↔ 土 ↔ 水 ↔ 火 ↔ 金 ↔ 木</div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card" id="wood">
+        <span class="type-badge">木タイプ</span>
+        <h2>育てながら深める恋</h2>
+        <p><strong>傾向:</strong> まっすぐで成長志向。誠実さや希望を感じる相手に心が動きやすい。</p>
+        <p><strong>相性の見方:</strong> 火タイプと勢いを作りやすく、水タイプとは安心感を育てやすい。</p>
+        <p><strong>注意点:</strong> 理想を抱え込みすぎると苦しくなりやすい。</p>
+      </section>
+
+      <section class="card" id="fire">
+        <span class="type-badge">火タイプ</span>
+        <h2>惹きつけて進める恋</h2>
+        <p><strong>傾向:</strong> 熱量が高く、反応が返ってくる関係で一気に温度が上がりやすい。</p>
+        <p><strong>相性の見方:</strong> 土タイプが受け止め役になりやすく、木タイプとは前進力が出やすい。</p>
+        <p><strong>注意点:</strong> 早く答えを出したくなりやすい。</p>
+      </section>
+
+      <section class="card" id="earth">
+        <span class="type-badge">土タイプ</span>
+        <h2>信頼を積んで育てる恋</h2>
+        <p><strong>傾向:</strong> 安心感と継続性を大事にする。急展開より、じわじわ強い関係が向く。</p>
+        <p><strong>相性の見方:</strong> 金タイプと整いやすく、火タイプと組むと温度感のバランスがとりやすい。</p>
+        <p><strong>注意点:</strong> 相手を支えすぎると自分が疲れやすい。</p>
+      </section>
+
+      <section class="card" id="metal">
+        <span class="type-badge">金タイプ</span>
+        <h2>本命を見極める恋</h2>
+        <p><strong>傾向:</strong> 相手を見る目が鋭く、礼儀や誠実さに反応しやすい。</p>
+        <p><strong>相性の見方:</strong> 土タイプと安定しやすく、水タイプとは静かな信頼が育ちやすい。</p>
+        <p><strong>注意点:</strong> 厳しさが強く出ると距離が開きやすい。</p>
+      </section>
+
+      <section class="card" id="water">
+        <span class="type-badge">水タイプ</span>
+        <h2>感覚でつながる恋</h2>
+        <p><strong>傾向:</strong> 感受性と直感が強く、空気や間の変化に敏感。</p>
+        <p><strong>相性の見方:</strong> 木タイプと流れを作りやすく、金タイプとは静かな相互理解が生まれやすい。</p>
+        <p><strong>注意点:</strong> 深読みしすぎると動きが止まりやすい。</p>
+      </section>
+    </div>
+
+    <p class="cta">個別の時期や相手との関係性まで知りたい場合は、LINE内の個別鑑定をご利用ください。</p>
+  </div>
+</body>
+</html>

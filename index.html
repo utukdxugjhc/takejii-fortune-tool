@@ -908,6 +908,107 @@
         .result-id-copy:hover {
             background: rgba(159, 122, 234, 0.28);
         }
+
+        .top-cta {
+            margin: 1.1rem 0 1.35rem;
+            padding: 1rem 1rem 1.1rem;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(246,224,94,0.12), rgba(237,100,166,0.12), rgba(159,122,234,0.12));
+            border: 1px solid rgba(246, 224, 94, 0.28);
+            text-align: center;
+            box-shadow: 0 0 24px rgba(246, 224, 94, 0.08);
+        }
+
+        .top-cta-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.08em;
+        }
+
+        .top-cta-text {
+            margin-top: 0.4rem;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .top-cta .result-id-box {
+            margin: 0.9rem 0 0.85rem;
+            padding: 0.8rem 0.9rem;
+        }
+
+        .top-cta .result-id-code {
+            font-size: 1.15rem;
+        }
+
+        .top-cta .result-id-help {
+            font-size: 0.72rem;
+        }
+
+        .top-cta .result-id-copy {
+            margin-top: 0.65rem;
+            padding: 0.68rem 0.85rem;
+            font-size: 0.78rem;
+        }
+
+        .top-cta .premium-btn {
+            padding: 0.85rem;
+            font-size: 0.92rem;
+            margin-top: 0.2rem;
+        }
+
+        .top-cta-note {
+            margin-top: 0.65rem;
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            opacity: 0.75;
+        }
+
+        .line-guide-box {
+            margin-top: 1.5rem;
+            padding: 1.4rem 1.1rem;
+            border-radius: 18px;
+            background: rgba(13, 10, 26, 0.62);
+            border: 1px solid rgba(159, 122, 234, 0.28);
+            text-align: center;
+        }
+
+        .line-guide-box h3 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 1rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.55rem;
+            letter-spacing: 0.08em;
+        }
+
+        .line-guide-box p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .line-guide-list {
+            text-align: left;
+            max-width: 280px;
+            margin: 0.95rem auto 0;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .line-guide-list li {
+            list-style: none;
+            margin: 0.42rem 0;
+            padding-left: 1.35rem;
+            position: relative;
+        }
+
+        .line-guide-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
     </style>
 </head>
 <body>
@@ -984,103 +1085,53 @@
                     <p class="destiny-value" id="main-gogyo"></p>
                     <p class="destiny-image" id="gogyo-image"></p>
                 </div>
-                
-                <div class="stats-grid fade-in delay-2">
-                    <div class="stat-item">
-                        <p class="stat-label">✧ 総格 ✧</p>
-                        <p class="stat-value" id="total-strokes"></p>
+
+                <div class="top-cta fade-in delay-1">
+                    <p class="top-cta-title">完全版はLINEで受け取る</p>
+                    <p class="top-cta-text">このツールでは属性まで。続きはLINEで無料解説と個別鑑定案内をお届け</p>
+
+                    <div class="result-id-box">
+                        <p class="result-id-label">LINEで送る鑑定番号</p>
+                        <p class="result-id-code" id="top-result-id-code">K----</p>
+                        <p class="result-id-help" id="top-result-id-help">診断後に発行された鑑定番号をLINEで送ると、あなたの属性タイプの無料解説を受け取れます</p>
+                        <button type="button" class="result-id-copy" onclick="copyResultId()">鑑定番号をコピーする</button>
                     </div>
-                    <div class="stat-item">
-                        <p class="stat-label">✧ 恋の温度感 ✧</p>
-                        <p class="stat-value" id="love-temperature"></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">✧ 日干 ✧</p>
-                        <p class="stat-value" id="nikkan"></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">✧ 恋愛フェーズ ✧</p>
-                        <p class="stat-value" id="love-phase"></p>
-                    </div>
+
+                    <a href="#" class="premium-btn" onclick="handlePremiumClick()">
+                        ✦ LINEで続きを見る ✦
+                    </a>
+
+                    <p class="top-cta-note">※ LINE追加後に鑑定番号を送ると、属性の無料解説が自動返信されます</p>
                 </div>
                 
                 <div class="traits-section fade-in delay-3">
-                    <h3>恋で出やすい性質</h3>
+                    <h3>この属性に出やすい気質</h3>
                     <div id="traits-container" style="text-align:center;"></div>
                 </div>
-                
-                <div class="meishiki-section fade-in delay-3">
-                    <h3 style="font-family:'Kaisei Decol',serif;font-size:0.95rem;color:var(--accent-purple);margin-bottom:0.5rem;text-align:center;letter-spacing:0.15em;">
-                        ─ 命式（四柱） ─
-                    </h3>
-                    <div id="meishiki-display" class="meishiki-grid"></div>
-                </div>
-                
-                <div class="fortune-message fade-in delay-4">
-                    <h3>✦ 恋を進めるヒント ✦</h3>
-                    <p id="fortune-text"></p>
-                </div>
-                
-                <!-- チラ見せセクション -->
-                <div class="teaser-section fade-in delay-5">
-                    <div class="teaser-header">
-                        <h3>✧ 無料診断の続き ✧</h3>
-                        <p>相性・時期・恋の進め方はこの先にあります</p>
-                    </div>
-                    
-                    <div class="teaser-grid">
-                        <div class="teaser-item">
-                            <p class="teaser-item-label">💕 恋愛タイプ</p>
-                            <p class="teaser-item-value" id="teaser-type">一途で慎重な恋...</p>
-                            <p class="teaser-item-stars">★★★★☆</p>
-                        </div>
-                        <div class="teaser-item">
-                            <p class="teaser-item-label">⚠ つまずきやすい恋</p>
-                            <p class="teaser-item-value" id="teaser-mistake">相手に合わせすぎる...</p>
-                            <p class="teaser-item-stars">★★★☆☆</p>
-                        </div>
-                        <div class="teaser-item">
-                            <p class="teaser-item-label">💫 惹かれやすい相手</p>
-                            <p class="teaser-item-value" id="teaser-attracted">包容力のある人...</p>
-                            <p class="teaser-item-stars">★★★★★</p>
-                        </div>
-                        <div class="teaser-item">
-                            <p class="teaser-item-label">🌙 次の恋愛フェーズ</p>
-                            <p class="teaser-item-value" id="teaser-phase">関係が動く準備期...</p>
-                            <p class="teaser-item-stars">★★★☆☆</p>
-                        </div>
-                    </div>
-                    
-                    <div class="teaser-detail">
-                        <h4>✦ LINEで分かる恋が動く時期 ✦</h4>
-                        <div class="teaser-detail-text">
-                            <span id="teaser-turning-visible">あなたの名前と命式を重ねると、次に恋が動きやすいのは</span><span class="teaser-detail-blur" id="teaser-timing-blur">春の終わりから初夏にかけてです。この時期は、連絡が増える・相手の反応が変わる・新しいご縁が入るなど、恋愛の流れが変わりやすくなります。特にあなたの場合は...</span>
-                        </div>
-                    </div>
-                    
-                    <div class="teaser-compatibility">
-                        <h4>💫 LINEで分かる相性の良い相手</h4>
-                        <p style="font-size:0.8rem;color:var(--text-secondary);">恋愛で縁が深い相手の特徴は...</p>
-                        <div class="teaser-compatibility-value">
-                            <span class="compat-badge" id="teaser-compat1">火</span>
-                            <span class="compat-badge" id="teaser-compat2">金</span>
-                        </div>
-                    </div>
+
+                <div class="line-guide-box fade-in delay-4">
+                    <h3>LINEで無料解説されること</h3>
+                    <p>ここから先は、あなた個人の未来を断定するのではなく、<br>この属性タイプの恋愛傾向や相性の良いタイプを解説します。</p>
+                    <ul class="line-guide-list">
+                        <li>この属性タイプの恋愛傾向</li>
+                        <li>相性が良いタイプと注意しやすいタイプ</li>
+                        <li>五行の相関図で見る関係性のイメージ</li>
+                        <li>さらに深く知りたい人向けの個別鑑定案内</li>
+                    </ul>
                 </div>
             </div>
             
             <!-- 有料鑑定CTA -->
             <div class="premium-cta fade-in delay-5">
                 <span class="premium-cta-badge">✦ 登録後すぐ自動配信 ✦</span>
-                <h3>LINEで恋愛診断の続きを受け取る</h3>
-                <p style="font-size:0.85rem;color:var(--text-secondary);">姓名鑑定 × 四柱推命で<br>相性・時期・恋の進め方を無料でお届け</p>
+                <h3>LINEで属性タイプの解説を受け取る</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);">このツールでは属性まで。<br>続きはLINEで無料解説と個別鑑定案内をお届け</p>
                 
                 <ul class="premium-cta-list">
-                    <li>恋が動きやすい時期</li>
-                    <li>相性の良い相手の特徴</li>
-                    <li>今やるべき恋愛行動</li>
-                    <li>悩み別の個別メッセージ</li>
-                    <li>初回限定のPDF鑑定案内</li>
+                    <li>この属性タイプの恋愛傾向</li>
+                    <li>相性が良いタイプの見方</li>
+                    <li>五行の相関図で見る関係性</li>
+                    <li>詳しく知りたい人向けの個別鑑定案内</li>
                 </ul>
                 
                 <div class="premium-cta-price">
@@ -1091,7 +1142,7 @@
                 <div class="result-id-box">
                     <p class="result-id-label">LINEで送る鑑定番号</p>
                     <p class="result-id-code" id="result-id-code">K----</p>
-                    <p class="result-id-help" id="result-id-help">診断後に発行された鑑定番号をLINEで送ると、あなた専用の続きを受け取れます</p>
+                    <p class="result-id-help" id="result-id-help">診断後に発行された鑑定番号をLINEで送ると、あなたの属性タイプの無料解説を受け取れます</p>
                     <button type="button" class="result-id-copy" id="copy-result-id-btn" onclick="copyResultId()">鑑定番号をコピーする</button>
                 </div>
                 
@@ -1099,7 +1150,7 @@
                     ✦ LINEで続きを見る ✦
                 </a>
                 
-                <p class="premium-cta-note">※ LINE追加後に鑑定番号を送ると、続きを自動返信します</p>
+                <p class="premium-cta-note">※ LINE追加後に鑑定番号を送ると、属性タイプの無料解説が自動返信されます</p>
             </div>
             
             <p class="back-btn" onclick="showForm()">✧ もう一度診断する ✧</p>
@@ -1361,17 +1412,6 @@ async function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     document.getElementById('result-name').textContent = `${sei} ${mei} 様`;
     document.getElementById('main-gogyo').textContent = seimei.mainGogyo;
     document.getElementById('gogyo-image').textContent = GOGYO_DATA[seimei.mainGogyo].image;
-    document.getElementById('total-strokes').textContent = `${seimei.total}画`;
-    
-    const temperatureEl = document.getElementById('love-temperature');
-    temperatureEl.textContent = teaser.temperature;
-    temperatureEl.className = 'stat-value';
-    if (teaser.temperature.includes('高')) temperatureEl.classList.add('luck-great');
-    else if (teaser.temperature.includes('安定')) temperatureEl.classList.add('luck-good');
-    else temperatureEl.classList.add('luck-bad');
-    
-    document.getElementById('nikkan').textContent = shichusuimei.nikkan;
-    document.getElementById('love-phase').textContent = teaser.phaseLabel;
     
     // 特徴タグ
     const traitsContainer = document.getElementById('traits-container');
@@ -1383,31 +1423,9 @@ async function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     traits.forEach(t => {
         traitsContainer.innerHTML += `<span class="trait-tag">${t}</span>`;
     });
-    
-    // 命式表示
-    const meishikiDisplay = document.getElementById('meishiki-display');
-    meishikiDisplay.innerHTML = `
-        <div class="meishiki-pillar">
-            <p class="meishiki-pillar-label">年柱</p>
-            <p class="meishiki-pillar-value">${shichusuimei.yearKanshi}</p>
-        </div>
-        <div class="meishiki-pillar">
-            <p class="meishiki-pillar-label">月柱</p>
-            <p class="meishiki-pillar-value">${shichusuimei.monthKanshi}</p>
-        </div>
-        <div class="meishiki-pillar">
-            <p class="meishiki-pillar-label">日柱</p>
-            <p class="meishiki-pillar-value">${shichusuimei.dayKanshi}</p>
-        </div>
-    `;
-    
-    // メッセージ
+
     const messages = FORTUNE_MESSAGES[seimei.mainGogyo];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    document.getElementById('fortune-text').textContent = randomMessage;
-    
-    // チラ見せ更新
-    updateTeaser(seimei.mainGogyo);
 
     const resultId = generateResultId(sei, mei, year, month, day, seimei.mainGogyo);
     currentDiagnosisResult = {
@@ -1505,19 +1523,6 @@ const TEASER_DATA = {
     }
 };
 
-// チラ見せ更新
-function updateTeaser(mainGogyo) {
-    const data = TEASER_DATA[mainGogyo];
-    
-    document.getElementById('teaser-type').textContent = data.type;
-    document.getElementById('teaser-mistake').textContent = data.mistake;
-    document.getElementById('teaser-attracted').textContent = data.attracted;
-    document.getElementById('teaser-phase').textContent = data.phase;
-    document.getElementById('teaser-timing-blur').textContent = data.timing;
-    document.getElementById('teaser-compat1').textContent = data.compat[0];
-    document.getElementById('teaser-compat2').textContent = data.compat[1];
-}
-
 function generateResultId(sei, mei, year, month, day, mainGogyo) {
     const seed = `${sei}${mei}${year}${month}${day}${mainGogyo}${Date.now()}`;
     let hash = 0;
@@ -1553,19 +1558,24 @@ async function saveDiagnosisResult(payload) {
 
 function renderResultIdState(resultId, saveState) {
     document.getElementById('result-id-code').textContent = resultId;
+    document.getElementById('top-result-id-code').textContent = resultId;
     const help = document.getElementById('result-id-help');
+    const topHelp = document.getElementById('top-result-id-help');
 
     if (saveState.mode === 'remote-saved') {
         help.textContent = 'この鑑定番号をLINEで送ると、あなた専用の続きを自動返信します';
+        topHelp.textContent = 'この鑑定番号をLINEで送ると、あなた専用の続きを自動返信します';
         return;
     }
 
     if (saveState.mode === 'remote-error') {
         help.textContent = '保存に失敗した可能性があります。まず鑑定番号を控えてからLINEに進んでください';
+        topHelp.textContent = '保存に失敗した可能性があります。まず鑑定番号を控えてからLINEに進んでください';
         return;
     }
 
     help.textContent = 'GAS未設定のためローカル保存のみです。鑑定番号を控えてからLINE導線の接続を進めてください';
+    topHelp.textContent = 'GAS未設定のためローカル保存のみです。鑑定番号を控えてからLINE導線の接続を進めてください';
 }
 
 async function copyResultId() {
