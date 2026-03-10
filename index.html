@@ -1103,10 +1103,41 @@
 
                     <p class="top-cta-note">※ LINE追加後に鑑定番号を送ると、属性の無料解説が自動返信されます</p>
                 </div>
+
+                <div class="stats-grid fade-in delay-2">
+                    <div class="stat-item">
+                        <p class="stat-label">✧ 総格 ✧</p>
+                        <p class="stat-value" id="total-strokes"></p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">✧ 恋の温度感 ✧</p>
+                        <p class="stat-value" id="love-temperature"></p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">✧ 日干 ✧</p>
+                        <p class="stat-value" id="nikkan"></p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">✧ 恋愛フェーズ ✧</p>
+                        <p class="stat-value" id="love-phase"></p>
+                    </div>
+                </div>
                 
                 <div class="traits-section fade-in delay-3">
                     <h3>この属性に出やすい気質</h3>
                     <div id="traits-container" style="text-align:center;"></div>
+                </div>
+
+                <div class="meishiki-section fade-in delay-3">
+                    <h3 style="font-family:'Kaisei Decol',serif;font-size:0.95rem;color:var(--accent-purple);margin-bottom:0.5rem;text-align:center;letter-spacing:0.15em;">
+                        ─ 命式（四柱） ─
+                    </h3>
+                    <div id="meishiki-display" class="meishiki-grid"></div>
+                </div>
+
+                <div class="fortune-message fade-in delay-4">
+                    <h3>✦ いま出ている恋の傾向 ✦</h3>
+                    <p id="fortune-text"></p>
                 </div>
 
                 <div class="line-guide-box fade-in delay-4">
@@ -1412,6 +1443,18 @@ async function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
     document.getElementById('result-name').textContent = `${sei} ${mei} 様`;
     document.getElementById('main-gogyo').textContent = seimei.mainGogyo;
     document.getElementById('gogyo-image').textContent = GOGYO_DATA[seimei.mainGogyo].image;
+
+    document.getElementById('total-strokes').textContent = `${seimei.total}画`;
+
+    const temperatureEl = document.getElementById('love-temperature');
+    temperatureEl.textContent = teaser.temperature;
+    temperatureEl.className = 'stat-value';
+    if (teaser.temperature.includes('高')) temperatureEl.classList.add('luck-great');
+    else if (teaser.temperature.includes('安定')) temperatureEl.classList.add('luck-good');
+    else temperatureEl.classList.add('luck-bad');
+
+    document.getElementById('nikkan').textContent = shichusuimei.nikkan;
+    document.getElementById('love-phase').textContent = teaser.phaseLabel;
     
     // 特徴タグ
     const traitsContainer = document.getElementById('traits-container');
@@ -1426,6 +1469,24 @@ async function diagnose(sei, mei, seiReading, meiReading, year, month, day) {
 
     const messages = FORTUNE_MESSAGES[seimei.mainGogyo];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+    const meishikiDisplay = document.getElementById('meishiki-display');
+    meishikiDisplay.innerHTML = `
+        <div class="meishiki-pillar">
+            <p class="meishiki-pillar-label">年柱</p>
+            <p class="meishiki-pillar-value">${shichusuimei.yearKanshi}</p>
+        </div>
+        <div class="meishiki-pillar">
+            <p class="meishiki-pillar-label">月柱</p>
+            <p class="meishiki-pillar-value">${shichusuimei.monthKanshi}</p>
+        </div>
+        <div class="meishiki-pillar">
+            <p class="meishiki-pillar-label">日柱</p>
+            <p class="meishiki-pillar-value">${shichusuimei.dayKanshi}</p>
+        </div>
+    `;
+
+    document.getElementById('fortune-text').textContent = randomMessage;
 
     const resultId = generateResultId(sei, mei, year, month, day, seimei.mainGogyo);
     currentDiagnosisResult = {
